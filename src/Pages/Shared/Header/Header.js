@@ -5,11 +5,12 @@ import { NavLink } from 'react-router-dom';
 import logoblack from '../../../images/logoblack.png'
 import logo from '../../../images/logo.png'
 import './Header.css'
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
     const [isSticky, setSticky] = useState(false);
     const [isCollapsed, setCollapsed] = useState(null);
-
+    const { user, logOut } = useAuth();
     useEffect(() => {
         window.addEventListener("scroll", () => {
             if (window.scrollY > 50) {
@@ -62,44 +63,47 @@ const Header = () => {
                             className={(isSticky || isCollapsed) ? "text-dark me-3" : "text-white me-3"}>
                             Contact
                         </Nav.Link>
-
-                        <>
-                            <Nav.Link
-                                as={NavLink}
-                                to="/login"
-                                className="btn-main text-white px-4 me-3 rounded-pill">
-                                Log in
-                            </Nav.Link>
-                        </>
-                        <>
-                            <Nav.Link
-                                as={NavLink}
-                                to="/dashboard"
-                                className={(isSticky || isCollapsed) ? "text-dark me-3" : "text-white me-3"}>
-                                Dashboard
-                            </Nav.Link>
-                            <NavDropdown
-                                align="end"
-                                title={
-                                    <img
-                                        style={{
-                                            width: "40px",
-                                            borderRadius: "50%",
-                                        }}
-                                        src="https://lh3.googleusercontent.com/a/AATXAJxqntyGV5_TBzxtFXy1reOUBQZC_1Qa4d6eYe7K5w=s96-c"
-                                        alt=""
-                                    />
-                                }
-                            >
-                                <div className="text-center py-4 px-3">
-                                    <h6>Romjan Ali</h6>
-                                    <p className="my-2">romjanvr5@gmail.com</p>
-                                    <button className="btn-regular">
-                                        Sign Out
-                                    </button>
-                                </div>
-                            </NavDropdown>
-                        </>
+                        {
+                            !user?.email ?
+                                <>
+                                    <Nav.Link
+                                        as={NavLink}
+                                        to="/login"
+                                        className="btn-main text-white px-4 me-3 rounded-pill">
+                                        Log in
+                                    </Nav.Link>
+                                </>
+                                :
+                                <>
+                                    <Nav.Link
+                                        as={NavLink}
+                                        to="/dashboard"
+                                        className={(isSticky || isCollapsed) ? "text-dark me-3" : "text-white me-3"}>
+                                        Dashboard
+                                    </Nav.Link>
+                                    <NavDropdown
+                                        align="end"
+                                        title={
+                                            <img
+                                                style={{
+                                                    width: "40px",
+                                                    borderRadius: "50%",
+                                                }}
+                                                src={user.photoURL}
+                                                alt=""
+                                            />
+                                        }
+                                    >
+                                        <div className="text-center py-4 px-3">
+                                            <h6>{user.displayName}</h6>
+                                            <p className="my-2">{user.email}</p>
+                                            <button onClick={logOut} className="btn-main text-white py-2 px-3 rounded mt-2">
+                                                Sign Out
+                                            </button>
+                                        </div>
+                                    </NavDropdown>
+                                </>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
