@@ -1,0 +1,74 @@
+.w-80 {
+    width: 80%;
+}
+
+.section-title {
+    color: #383737;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.section-description {
+    color: #535353;
+    font-size: 18px;
+}
+
+.car-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #4d4d4d;
+}
+
+.car-title:hover{
+    color: #f0151f;
+}
+
+.car-price {
+    font-size: 22px;
+    font-weight: 600;
+    color: #f0151f;
+}
+
+.car-box{
+    transition: .5s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.car-box:hover{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.car-img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.car-img img{
+    transform: scale(1);
+    transition: all 600ms ease;
+}
+
+.car-box:hover .car-img img {
+    transform: scale(1.08);
+}
+
+.car-description {
+    color: #535353;
+}
+
+@media only screen and (max-width: 576px){
+    .w-80{
+        width: 95%;
+    }
+    .car-price{
+        font-size: 18px;
+    }
+    .car-title{
+        font-size: 18px;
+    }
+    .car-description {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,109 @@
+.banner-bg {
+    background: url(../../../images/topbanner.jpg) rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-title {
+    font-size: 70px;
+}
+
+.fs-para{
+    font-size: 19px;
+}
+
+/** Btn Regular **/
+.btn-regular {
+    color: #fff;
+    text-align: center;
+    border: 2px solid transparent;
+    display: inline-block;
+    padding: 10px 25px;
+    position: relative;
+    z-index: 1;
+    transition: all .7s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.btn-regular:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .7s ease;
+    z-index: -1;
+    border-radius: 3px;
+}
+
+.btn-regular:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .7s ease;
+    z-index: -1;
+}
+
+.btn-regular:hover {
+    background: transparent;
+}
+
+.btn-regular:hover:before {
+    width: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-regular:hover:after {
+    width: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.btn-regular {
+    background: #f0151f;
+}
+
+.btn-regular:before {
+    background: #f0151f;
+}
+
+.btn-regular:after {
+    background: #f0151f;
+}
+
+.btn-regular:hover {
+    color: #f0151f;
+    border: 2px solid #f0151f;
+}
+
+
+@media only screen and (max-width: 576px){
+    .banner-title{
+        font-size: 35px;
+    }
+
+    .fs-para{
+        font-size: 14px;
+    }
+    .btn-regular{
+        padding: 8px 25px;
+    }
+}

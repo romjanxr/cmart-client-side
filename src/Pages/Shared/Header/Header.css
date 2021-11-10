@@ -1,0 +1,14 @@
+.header{
+    border-bottom: 1px solid rgba(220, 220, 220, .2);
+}
+
+.btn-main {
+    background: #f0151f;
+    border: none;
+}
+
+.collapseBg {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
