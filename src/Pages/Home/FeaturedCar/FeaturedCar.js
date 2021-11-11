@@ -1,31 +1,39 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
 import './FeaturedCar.css'
 
 const FeaturedCar = () => {
+    const [cars, setCars] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/cars')
+            .then(res => setCars(res.data))
+    }, []);
+
     return (
-        <div className="container py-2 my-5 w-80" id="tour-package">
+        <div className="container py-2 my-5 w-80">
             <div className="my-5 text-center pb-2">
                 <h2 className="section-title">Featured Cars</h2>
                 <p className="section-description">this car are featured by their popularity and features</p>
             </div>
             <div>
                 <Row xs={1} md={3} className="g-4">
-                    {Array.from({ length: 6 }).map((_, idx) => (
-                        <Col>
+                    {cars.slice(0, 6).map((car) => (
+                        <Col key={car._id}>
                             <Fade bottom duration={2500} distance="40px">
                                 <Card className="car-box">
                                     <div className="car-img">
-                                        <Card.Img variant="top" src="https://storage.googleapis.com/theme-vessel-items/checking-sites/cmart-2-html/HTML/main/img/car/car-2.jpg" />
+                                        <Card.Img variant="top" src={car.img} />
                                     </div>
                                     <Card.Body>
                                         <div className="d-flex justify-content-between mt-2 my-2">
-                                            <Card.Title className="car-title">Toyota Prius</Card.Title>
-                                            <Card.Title className="car-price">$850.00</Card.Title>
+                                            <Card.Title className="car-title">{car.name}</Card.Title>
+                                            <Card.Title className="car-price">${car.price}</Card.Title>
                                         </div>
                                         <Card.Text className="car-description">
-                                            Prius Prime offers the best of both worlds: impressive fuel economy and the flexibility of electric charging. Discover how much you can save with this plug-in hybrid’s ability to drive solely on electricity
+                                            {car.description.slice(0, 190)}
                                         </Card.Text>
                                         <button className="btn-regular rounded">Buy Now</button>
                                     </Card.Body>

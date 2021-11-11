@@ -1,0 +1,12 @@
+.sub-banner {
+    background: rgba(0, 0, 0, 0.4) url(../../images/subbanner.jpg);
+    background-size: cover;
+    height: 450px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

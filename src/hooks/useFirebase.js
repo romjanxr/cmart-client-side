@@ -1,5 +1,6 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import initializeAuthentication from "../Pages/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -11,19 +12,26 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
 
     const signInUsingGoogle = (location, history) => {
+        const loading = toast.loading('Please wait...');
         setIsLoading(true);
         signInWithPopup(auth, googleProvider)
             .then(() => {
+                toast.dismiss(loading);
                 history.replace(location.state?.from || '/');
             })
-            .catch(error => console.log(error.message))
+            .catch(error => {
+                toast.dismiss(loading);
+                toast.error(error.message)
+            })
             .finally(() => setIsLoading(false))
     }
 
     const registerNewUser = (name, email, password, location, history) => {
         setIsLoading(true);
+        const loading = toast.loading('Please wait...');
         createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
+                toast.dismiss(loading);
                 const photo = 'https://i.ibb.co/SP5W5vn/user.png'
                 const newUser = { displayName: name, email, photoURL: photo }
                 // send data to firebase
@@ -31,7 +39,10 @@ const useFirebase = () => {
                 setUserName(name, photo);
                 history.replace(location.state?.from || '/');
             })
-            .catch(error => console.log(error.message))
+            .catch(error => {
+                toast.dismiss(loading);
+                toast.error(error.message)
+            })
             .finally(() => setIsLoading(false))
     }
 
@@ -43,12 +54,17 @@ const useFirebase = () => {
     }
 
     const handleUserLogin = (email, password, location, history) => {
+        const loading = toast.loading('Please wait...');
         setIsLoading(true);
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
+                toast.dismiss(loading);
                 history.replace(location.state?.from || '/');
             })
-            .catch(error => console.log(error.message))
+            .catch(error => {
+                toast.dismiss(loading);
+                toast.error(error.message)
+            })
             .finally(() => setIsLoading(false))
     }
 

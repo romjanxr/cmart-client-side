@@ -45,9 +45,9 @@ const Header = () => {
                         </Nav.Link>
                         <Nav.Link
                             as={NavLink}
-                            to="/#tour-package"
+                            to="/explore-cars"
                             className={(isSticky || isCollapsed) ? "text-dark me-3" : "text-white me-3"}>
-                            Our Packages
+                            Explore Cars
                         </Nav.Link>
 
                         <Nav.Link
