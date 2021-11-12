@@ -30,7 +30,7 @@ const AddNewCar = () => {
             <div className="w-40 bg-white rounded shadow d-flex align-items-center justify-content-center">
                 <div className="w-100">
                     <div className="text-center mb-4">
-                        <h3 className="fw-bold">Create An Account</h3>
+                        <h3 className="fw-bold">Add A New Car</h3>
                     </div>
                     <div className="mt-3">
                         <form onSubmit={handleSubmit(onSubmit)}>
