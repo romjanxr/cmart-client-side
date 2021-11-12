@@ -58,7 +58,7 @@ const ManageOrders = () => {
         <div className="section-bg">
             <div className="pt-5 ms-280">
                 <Table striped bordered hover responsive>
-                    <thead>
+                    <thead style={{ color: "#f0151f" }}>
                         <tr>
                             <th>#</th>
                             <th>Name</th>
