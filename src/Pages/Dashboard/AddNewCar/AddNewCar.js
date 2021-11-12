@@ -23,12 +23,10 @@ const AddNewCar = () => {
             toast.dismiss(loading);
             toast.error('Please insert required details')
         }
-
-
     }
 
     return (
-        <div className="login-bg d-flex align-items-center justify-content-center">
+        <div className="section-bg d-flex align-items-center justify-content-center">
             <div className="w-40 bg-white rounded shadow d-flex align-items-center justify-content-center">
                 <div className="w-100">
                     <div className="text-center mb-4">

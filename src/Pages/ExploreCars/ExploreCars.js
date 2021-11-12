@@ -2,11 +2,13 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
+import { useHistory } from 'react-router';
 import Header from '../Shared/Header/Header';
 import './ExploreCars.css'
 
 const ExploreCars = () => {
     const [cars, setCars] = useState([]);
+    const history = useHistory();
 
     useEffect(() => {
         axios.get('http://localhost:5000/cars')
@@ -37,7 +39,7 @@ const ExploreCars = () => {
                                             <Card.Text className="car-description">
                                                 {car.description.slice(0, 140)}
                                             </Card.Text>
-                                            <button className="btn-regular rounded">Buy Now</button>
+                                            <button onClick={() => history.push(`/car/${car._id}`)} className="btn-regular rounded">Buy Now</button>
                                         </Card.Body>
                                     </Card>
                                 </Fade>

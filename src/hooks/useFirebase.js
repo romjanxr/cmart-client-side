@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -8,6 +9,7 @@ initializeAuthentication();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
 
@@ -15,7 +17,12 @@ const useFirebase = () => {
         const loading = toast.loading('Please wait...');
         setIsLoading(true);
         signInWithPopup(auth, googleProvider)
-            .then(() => {
+            .then((res) => {
+                const user = res.user;
+                const { displayName, photoURL, email } = user;
+                const newUser = { displayName, photoURL, email };
+                axios.put('http://localhost:5000/users', newUser)
+                    .then();
                 toast.dismiss(loading);
                 history.replace(location.state?.from || '/');
             })
@@ -37,6 +44,9 @@ const useFirebase = () => {
                 // send data to firebase
                 setUser(newUser);
                 setUserName(name, photo);
+                // send data to database
+                axios.post('http://localhost:5000/users', newUser)
+                    .then()
                 history.replace(location.state?.from || '/');
             })
             .catch(error => {
@@ -84,10 +94,16 @@ const useFirebase = () => {
             setIsLoading(false);
         })
         return unsubscribe;
-    }, [auth])
+    }, [auth]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/users?email=${user.email}`)
+            .then(res => setAdmin(res.data.admin))
+    }, [user.email])
 
     return {
         user,
+        admin,
         isLoading,
         signInUsingGoogle,
         logOut,
