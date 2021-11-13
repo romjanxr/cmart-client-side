@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import Fade from 'react-reveal/Fade';
 import { useHistory } from 'react-router';
+import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
 import './ExploreCars.css'
 
@@ -11,7 +12,12 @@ const ExploreCars = () => {
     const history = useHistory();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/cars')
+        document.title = "Cmart | Explore Cars"
+    }, []);
+
+
+    useEffect(() => {
+        axios.get('https://carmart-server.herokuapp.com/cars')
             .then(res => setCars(res.data))
     }, []);
 
@@ -48,6 +54,7 @@ const ExploreCars = () => {
                     </Row>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

@@ -9,7 +9,7 @@ const ManageCars = () => {
     const [cars, setCars] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/cars')
+        axios.get('https://carmart-server.herokuapp.com/cars')
             .then(res => setCars(res.data))
     }, []);
 
@@ -24,7 +24,7 @@ const ManageCars = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     const remainingCars = cars.filter(car => car._id !== id);
-                    axios.delete(`http://localhost:5000/cars/${id}`)
+                    axios.delete(`https://carmart-server.herokuapp.com/cars/${id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
                                 setCars(remainingCars);

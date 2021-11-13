@@ -10,7 +10,7 @@ const AddNewCar = () => {
         const loading = toast.loading('Please wait...');
         const { name, description, price, img } = data;
         if (name && description && price && img) {
-            axios.post('http://localhost:5000/cars', data)
+            axios.post('https://carmart-server.herokuapp.com/cars', data)
                 .then(res => {
                     if (res.data.insertedId) {
                         toast.dismiss(loading);

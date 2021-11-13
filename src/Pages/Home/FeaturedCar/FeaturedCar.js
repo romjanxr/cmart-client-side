@@ -10,7 +10,7 @@ const FeaturedCar = () => {
     const history = useHistory();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/cars')
+        axios.get('https://carmart-server.herokuapp.com/cars')
             .then(res => setCars(res.data))
     }, []);
 

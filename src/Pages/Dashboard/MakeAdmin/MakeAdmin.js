@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         const loading = toast.loading('Please wait...');
-        axios.put('http://localhost:5000/users/admin', data)
+        axios.put('https://carmart-server.herokuapp.com/users/admin', data)
             .then(res => {
                 if (res.data.modifiedCount) {
                     toast.dismiss(loading);

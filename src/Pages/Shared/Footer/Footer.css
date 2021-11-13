@@ -1,0 +1,50 @@
+.footer-bg{
+    padding-top: 80px;
+    padding-bottom: 60px;
+    background: url(../../../images/footer.jpg) rgba(32, 18, 151, 0.3);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+}
+
+.footer-text h3{
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #e4e3e3;
+    text-transform: uppercase;
+}
+
+.footer-text p{
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #bfbfbf;
+}
+
+
+.footer-form {
+    width: 77%;
+    height: 50px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    font-size: 15px;
+    outline: 0;
+    border: transparent;
+}
+
+.subscribe-btn {
+    width: 20%;
+    background:#f0151f;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 3px;
+    border: transparent;
+}
+
+.subscribe-btn:hover{
+    background:#b41119;
+}

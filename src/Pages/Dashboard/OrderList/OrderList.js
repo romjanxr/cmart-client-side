@@ -11,9 +11,8 @@ const OrderList = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/orders?email=${user.email}`)
+        axios.get(`https://carmart-server.herokuapp.com/orders?email=${user.email}`)
             .then(res => {
-                console.log(res.data)
                 setOrders(res.data)
             })
     }, [user.email]);
@@ -29,7 +28,7 @@ const OrderList = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     const remainingOrders = orders.filter(order => order._id !== id);
-                    axios.delete(`http://localhost:5000/orders/${id}`)
+                    axios.delete(`https://carmart-server.herokuapp.com/orders/${id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
                                 setOrders(remainingOrders);

@@ -15,17 +15,16 @@ const CarDetails = () => {
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/cars/${id}`)
+        axios.get(`https://carmart-server.herokuapp.com/cars/${id}`)
             .then(res => setCar(res.data))
     }, [id])
 
     const onSubmit = data => {
-        console.log(data)
         const loading = toast.loading('Please wait...');
         const { name, email, address, phone } = data
         if (name && email && address && phone) {
             data.status = 'Pending';
-            axios.post('http://localhost:5000/orders', { ...data, car })
+            axios.post('https://carmart-server.herokuapp.com/orders', { ...data, car })
                 .then(res => {
                     if (res.data.insertedId) {
                         toast.dismiss(loading);

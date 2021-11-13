@@ -16,6 +16,7 @@ import useAuth from '../../../hooks/useAuth';
 import Payment from '../Payment/Payment';
 import AddReview from '../AddReview/AddReview';
 import ManageCars from '../ManageCars/ManageCars';
+import AdminRoute from '../../../Routes/AdminRoute';
 
 const Navbar = () => {
     const [sidebar, setSidebar] = useState(true);
@@ -122,18 +123,18 @@ const Navbar = () => {
                 <Route path={`${path}/review`}>
                     <AddReview />
                 </Route>
-                <Route path={`${path}/manage-orders`}>
+                <AdminRoute path={`${path}/manage-orders`}>
                     <ManageOrders />
-                </Route>
-                <Route path={`${path}/make-admin`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/make-admin`}>
                     <MakeAdmin />
-                </Route>
-                <Route path={`${path}/add-car`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/add-car`}>
                     <AddNewCar />
-                </Route>
-                <Route path={`${path}/manage-cars`}>
+                </AdminRoute>
+                <AdminRoute path={`${path}/manage-cars`}>
                     <ManageCars />
-                </Route>
+                </AdminRoute>
             </Switch>
 
         </>

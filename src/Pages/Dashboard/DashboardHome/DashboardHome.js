@@ -16,7 +16,7 @@ const DashboardHome = () => {
                             <h4 className="fs-4 fw-bold">{user.displayName}</h4>
                             <p className="text-secondary mb-1">{user.email}</p>
                         </div>
-                        <Button onClick={logOut} className="px-4 btn-main">Logout</Button>
+                        <Button onClick={logOut} className="px-4 py-2 rounded mt-2 text-white btn-main">Logout</Button>
                     </div>
                 </Card.Body>
             </Card>

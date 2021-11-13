@@ -19,13 +19,12 @@ const AddReview = () => {
         const loading = toast.loading('Please Wait...')
         const { name, feedback, star } = data;
         if (name && feedback && star) {
-            axios.post('http://localhost:5000/reviews', data)
+            axios.post('https://carmart-server.herokuapp.com/reviews', data)
                 .then(res => {
                     if (res.data.insertedId) {
                         toast.dismiss(loading);
                         toast.success('Review Added Successfully');
                         reset();
-                        console.log(data);
                     }
                 })
         }

@@ -10,7 +10,7 @@ const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/orders')
+        axios.get('https://carmart-server.herokuapp.com/orders')
             .then(res => setOrders(res.data))
     }, []);
 
@@ -24,7 +24,7 @@ const ManageOrders = () => {
         })
         setOrders(modifiedOrders)
         const modifiedStatus = { id, status };
-        axios.put('http://localhost:5000/orders', modifiedStatus)
+        axios.put('https://carmart-server.herokuapp.com/orders', modifiedStatus)
             .then(res => {
                 if (res.data.modifiedCount) {
                     toast.success(`Status changed to ${status}`)
@@ -43,7 +43,7 @@ const ManageOrders = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     const remainingOrders = orders.filter(order => order._id !== id);
-                    axios.delete(`http://localhost:5000/orders/${id}`)
+                    axios.delete(`https://carmart-server.herokuapp.com/orders/${id}`)
                         .then(res => {
                             if (res.data.deletedCount) {
                                 setOrders(remainingOrders);

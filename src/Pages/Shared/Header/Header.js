@@ -6,6 +6,7 @@ import logoblack from '../../../images/logoblack.png'
 import logo from '../../../images/logo.png'
 import './Header.css'
 import useAuth from '../../../hooks/useAuth';
+import { HashLink } from 'react-router-hash-link';
 
 const Header = () => {
     const [isSticky, setSticky] = useState(false);
@@ -51,17 +52,10 @@ const Header = () => {
                         </Nav.Link>
 
                         <Nav.Link
-                            as={NavLink}
+                            as={HashLink}
                             to="/#about"
                             className={(isSticky || isCollapsed) ? "text-dark me-3" : "text-white me-3"}>
                             About
-                        </Nav.Link>
-
-                        <Nav.Link
-                            as={NavLink}
-                            to="/#contact"
-                            className={(isSticky || isCollapsed) ? "text-dark me-3" : "text-white me-3"}>
-                            Contact
                         </Nav.Link>
                         {
                             !user?.email ?

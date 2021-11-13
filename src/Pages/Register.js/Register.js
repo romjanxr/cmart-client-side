@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
@@ -13,6 +13,10 @@ const Register = () => {
     const onSubmit = data => {
         registerNewUser(data.name, data.email, data.password, location, history)
     };
+
+    useEffect(() => {
+        document.title = "Cmart | Register"
+    }, []);
 
     return (
         <div className="section-bg d-flex align-items-center justify-content-center">

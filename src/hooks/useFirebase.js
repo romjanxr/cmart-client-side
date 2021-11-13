@@ -21,7 +21,7 @@ const useFirebase = () => {
                 const user = res.user;
                 const { displayName, photoURL, email } = user;
                 const newUser = { displayName, photoURL, email };
-                axios.put('http://localhost:5000/users', newUser)
+                axios.put('https://carmart-server.herokuapp.com/users', newUser)
                     .then();
                 toast.dismiss(loading);
                 history.replace(location.state?.from || '/');
@@ -45,7 +45,7 @@ const useFirebase = () => {
                 setUser(newUser);
                 setUserName(name, photo);
                 // send data to database
-                axios.post('http://localhost:5000/users', newUser)
+                axios.post('https://carmart-server.herokuapp.com/users', newUser)
                     .then()
                 history.replace(location.state?.from || '/');
             })
@@ -97,7 +97,7 @@ const useFirebase = () => {
     }, [auth]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/users?email=${user.email}`)
+        axios.get(`https://carmart-server.herokuapp.com/users?email=${user.email}`)
             .then(res => setAdmin(res.data.admin))
     }, [user.email])
 
