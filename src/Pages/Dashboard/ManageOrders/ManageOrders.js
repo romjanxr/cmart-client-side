@@ -56,7 +56,7 @@ const ManageOrders = () => {
 
     return (
         <div className="section-bg">
-            <div className="pt-5 ms-280">
+            <div className="pt-5 px-5">
                 <Table striped bordered hover responsive>
                     <thead style={{ color: "#f0151f" }}>
                         <tr>

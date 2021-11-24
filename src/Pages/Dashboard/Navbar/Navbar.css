@@ -71,4 +71,15 @@
   span {
     margin-left: 16px;
   }
-  
+
+  .dashboard-container{
+    overflow-x: hidden;
+    margin-left: 250px;
+    transition: 850ms;
+  }
+
+  @media only screen and (max-width: 576px){
+    .dashboard-container{
+      margin-left: 0;
+    }
+  }

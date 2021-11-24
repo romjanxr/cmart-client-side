@@ -110,33 +110,34 @@ const Navbar = () => {
                     </ul>
                 </nav>
             </IconContext.Provider>
-            <Switch>
-                <Route exact path={path}>
-                    <DashboardHome />
-                </Route>
-                <Route path={`${path}/payment`}>
-                    <Payment />
-                </Route>
-                <Route path={`${path}/orders`}>
-                    <OrderList />
-                </Route>
-                <Route path={`${path}/review`}>
-                    <AddReview />
-                </Route>
-                <AdminRoute path={`${path}/manage-orders`}>
-                    <ManageOrders />
-                </AdminRoute>
-                <AdminRoute path={`${path}/make-admin`}>
-                    <MakeAdmin />
-                </AdminRoute>
-                <AdminRoute path={`${path}/add-car`}>
-                    <AddNewCar />
-                </AdminRoute>
-                <AdminRoute path={`${path}/manage-cars`}>
-                    <ManageCars />
-                </AdminRoute>
-            </Switch>
-
+            <div className={sidebar && "dashboard-container"}>
+                <Switch>
+                    <Route exact path={path}>
+                        <DashboardHome />
+                    </Route>
+                    <Route path={`${path}/payment`}>
+                        <Payment />
+                    </Route>
+                    <Route path={`${path}/orders`}>
+                        <OrderList />
+                    </Route>
+                    <Route path={`${path}/review`}>
+                        <AddReview />
+                    </Route>
+                    <AdminRoute path={`${path}/manage-orders`}>
+                        <ManageOrders />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/make-admin`}>
+                        <MakeAdmin />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/add-car`}>
+                        <AddNewCar />
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manage-cars`}>
+                        <ManageCars />
+                    </AdminRoute>
+                </Switch>
+            </div>
         </>
     );
 };
