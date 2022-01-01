@@ -110,6 +110,7 @@ const Navbar = () => {
                     </ul>
                 </nav>
             </IconContext.Provider>
+
             <div className={sidebar && "dashboard-container"}>
                 <Switch>
                     <Route exact path={path}>
