@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, getIdToken } from "firebase/auth";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import initializeAuthentication from "../Pages/Firebase/firebase.init";
@@ -86,6 +86,8 @@ const useFirebase = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             if (user) {
+                getIdToken(user)
+                    .then(idToken => sessionStorage.setItem('idToken', idToken))
                 setUser(user);
             }
             else {
